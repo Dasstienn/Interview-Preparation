@@ -26,7 +26,7 @@ const FlipCards = ({ questions }) => {
     return (
         <div className={classes.area}>
             <button className={classes.btn} onClick={prevClick} disabled={idx === 0 ? true : false}><ArrowBackIosIcon /></button>
-            <FlipCard question={questions} />
+            <FlipCard question={questions[idx]} />
             <button className={classes.btn} onClick={nextClick} disabled={idx === questions.length - 1 ? true : false}><ArrowForwardIosIcon /></button>
         </div>
     )
