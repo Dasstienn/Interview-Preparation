@@ -1,0 +1,19 @@
+.box {
+    display:flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10rem;
+}
+
+.input-area {
+    width: 50%;
+    min-width: 600px;
+    max-width: 1200px;
+}
+
+.submit-btn {
+    width: 100px;
+}
