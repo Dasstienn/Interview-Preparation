@@ -1,37 +1,30 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import './App.css';
-import Input from './components/Input';
-import Questions from './components/Questions';
-import FlipCards from './components/FlipCards';
+import Header from './components/navigation/Header';
+import Input from './components/pages/Input';
+import Questions from './components/pages/Questions';
+import FlipCards from './components/pages/FlipCards';
+
 
 function App() {
-  const [questions, setQuestions] = useState([])
-  const dataUrl = "https://interview-preparation-aa76e-default-rtdb.firebaseio.com/data.json"
-
-  const fetchQuestions = async () => {
-    const res = await (await axios.get(dataUrl)).data
-    const loadedQs = []
-    for (const key in res) {
-      loadedQs.push(res[key])
-    }
-    setQuestions(loadedQs)
-  }
-
-  useEffect(() => {
-    fetchQuestions()
-  }, [])
-
-  const onInputSubmit = () => {
-    fetchQuestions()
-  }
 
   return (
-    <div className="App">
-      <Input questions={questions} setSubmit={onInputSubmit} />
-      <FlipCards questions={questions}/>
-      <Questions questions={questions} />
-    </div>
+      <div className="App">
+        <Router>
+          <Header />
+          <Switch>
+            <Router path="/input">
+              <Input />
+            </Router>
+            <Router path="/flipcards">
+              <FlipCards />
+            </Router>
+            <Router path="/questions">
+              <Questions />
+            </Router>
+          </Switch>
+        </Router >
+      </div >
   );
 }
 

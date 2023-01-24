@@ -1,0 +1,25 @@
+.container {
+    width: 80%;
+    min-width: 600px;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px 60px;
+    margin-top: 10rem;
+}
+
+/* .box {
+    background-color: var(--primary-color);
+    width: 100%;
+} */
+
+.select-container {
+    display: flex;
+    gap: 20px;
+}
+
+.select {
+    width: 200px;
+    height: 50px;
+}

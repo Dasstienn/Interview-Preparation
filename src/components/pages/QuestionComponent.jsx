@@ -5,6 +5,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
+
 export default function QuestionComponent(props) {
     const { question, answer, category, company } = props.question
     const [expanded, setExpanded] = React.useState(false);

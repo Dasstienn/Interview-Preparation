@@ -3,9 +3,11 @@ import Card from "./card/Card"
 import { CSSTransition } from 'react-transition-group'
 import { useState } from "react"
 
-const FlipCard = ({ question }) => {
-    const [showFront, setShowFront] = useState(true)
+const FlipCard = ({ question, showFront, setFlip }) => {
 
+    const handleClick = () => {
+        setFlip()
+    }
 
     return (
         <div className={classes.flipcard}>
@@ -16,9 +18,7 @@ const FlipCard = ({ question }) => {
             >
                 <Card
                     question={question}
-                    onClick={() => {
-                        setShowFront((prevState) => !prevState)
-                    }}
+                    onClick={handleClick}
                 />
             </CSSTransition>
         </div>
