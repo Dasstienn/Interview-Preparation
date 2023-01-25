@@ -32,12 +32,6 @@ const FlipCards = () => {
         setShowFront((prevState) => !prevState)
     }
 
-    let item = {}
-    if (questions[idx]) {
-        item = questions[idx]
-    }
-
-
     return (
         <div className={classes.area}>
             <button className={classes.btn} onClick={prevClick} disabled={idx === 0 ? true : false}><ArrowBackIosIcon /></button>

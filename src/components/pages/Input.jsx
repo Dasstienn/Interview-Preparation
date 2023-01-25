@@ -27,17 +27,12 @@ function Input() {
         company: "",
     }
 
-    const errorTexts = {
-        questionError: "",
-        answerError: "",
-        categoryError: "",
-        subCategoryError: "",
-        companyError: "",
-    }
-
     const [item, setItem] = useState(defaultToDo)
-    const [error, setError] = useState(errorTexts)
     const [questionError, setQuestionError] = useState("")
+    const [answerError, setAnswerError] = useState("")
+    const [categoryError, setCategoryError] = useState("")
+    const [subCategoryError, setSubCategoryError] = useState("")
+    const [companyError, setCompanyError] = useState("")
 
     const [category, setCategory] = useState('');
     const categories = questions.reduce((acc, val) => {
@@ -93,17 +88,20 @@ function Input() {
     const onSubmit = (event) => {
         event.preventDefault()
         !item.question ? setQuestionError("Please enter your question") : setQuestionError("")
-        !item.answer ? setError({...error, answerError: "Please enter your answer" }) : setError({...error, answerError: "" })
-        !item.category ? setError({...error, categoryError: "Please enter your category" }) : setError({...error, categoryError: "" })
-        !item.subCategory ? setError({...error, subCategoryError: "Please enter your subCategory" }) : setError({...error, subCategoryError: "" })
-        !item.company ? setError({...error, companyError: "Please enter your company" }) : setError({...error, companyError: "" })
+        !item.answer ? setAnswerError("Please enter your answer") : setAnswerError("")
+        !item.category ? setCategoryError("Please enter your category") : setCategoryError("")
+        !item.subCategory ? setSubCategoryError("Please enter your subCategory") : setSubCategoryError("")
+        !item.company ? setCompanyError("Please enter your company") : setCompanyError("")
         if (item.question && item.answer && item.category && item.subCategory && item.company) {
             addQuestion()
             setItem(defaultToDo)
+            setQuestionError("")
+            setAnswerError("")
+            setCategoryError("")
+            setSubCategoryError("")
+            setCompanyError("")
         }
     }
-
-    console.log(error)
 
     return (
         <Box
@@ -136,28 +134,39 @@ function Input() {
                 value={item.answer}
                 required
                 onChange={(e) => setItem({ ...item, answer: e.target.value })}
+                error={!!answerError}
+                helperText={answerError}
             />
 
             <div className={classes["select-container"]}>
-                <FormControl className={classes.select} helperText='Please select category'>
-                    <InputLabel id="demo-simple-select-label">Category</InputLabel>
+                <FormControl
+                    className={classes.select}
+                    required
+                    helperText={categoryError}
+                    error={!!categoryError}
+                >
+                    <InputLabel id="demo-simple-select-label" >Category</InputLabel>
                     <Select
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
-                        value={category}
+                        value={item.category}
                         label="Category"
                         onChange={handleCategoryChange}
-                        helperText='Please select category'
                     >
                         {Object.keys(categories).map(el => <MenuItem value={el}>{el}</MenuItem>)}
                     </Select>
                 </FormControl>
-                <FormControl className={classes.select}>
+                <FormControl
+                    className={classes.select}
+                    required
+                    helperText={subCategoryError}
+                    error={!!subCategoryError}
+                >
                     <InputLabel id="demo-simple-select-label">Sub-category</InputLabel>
                     <Select
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
-                        value={subCategory}
+                        value={item.subCategory}
                         label="Sub-category"
                         disabled={!category}
                         onChange={handleSubCategoryChange}
@@ -165,12 +174,17 @@ function Input() {
                         {Object.keys(subCategories).map(el => <MenuItem value={el}>{el}</MenuItem>)}
                     </Select>
                 </FormControl>
-                <FormControl className={classes.select}>
+                <FormControl
+                    className={classes.select}
+                    required
+                    helperText={companyError}
+                    error={!!companyError}
+                >
                     <InputLabel id="demo-simple-select-label">Company</InputLabel>
                     <Select
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
-                        value={company}
+                        value={item.company}
                         label="Company"
                         onChange={handleCompanyChange}
                     >

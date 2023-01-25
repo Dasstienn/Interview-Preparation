@@ -2,7 +2,6 @@ import classes from "./Card.module.css"
 import "./FlipTransition.css"
 
 const Card = ({ onClick, question }) => {
-    console.log(question)
 
     return (
         <div className={classes.card} onClick={onClick}>
