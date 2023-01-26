@@ -42,7 +42,7 @@ const Companies = ({ setCompanies }) => {
 
     return (
         <div>
-            <FormControl sx={{ m: 1, width: 300 }} size='small'>
+            <FormControl sx={{ m: 1, width: 200, bgcolor: "white", borderRadius: 2}}  size='small'>
                 <InputLabel id="demo-multiple-checkbox-label">Company</InputLabel>
                 <Select
                     labelId="demo-multiple-checkbox-label"
@@ -56,7 +56,7 @@ const Companies = ({ setCompanies }) => {
                 >
                     {Object.keys(companies).map((el) => (
                             <MenuItem key={el} value={el}>
-                                <Checkbox checked={selected.indexOf(el) > -1} />
+                                <Checkbox sx={{p:0.5}} checked={selected.indexOf(el) > -1} />
                                 <ListItemText primary={el} />
                             </MenuItem>
                     ))}

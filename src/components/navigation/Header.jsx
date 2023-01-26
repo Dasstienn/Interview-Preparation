@@ -1,14 +1,14 @@
-import { Link, BrowserRouter as Router, Switch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import classes from "./Header.module.css"
 
 function Header() {
     return (
         <div className={classes.main}>
-            <p className={classes.title}>Learned</p>
+            <Link className={classes.title} to="/">LearnD</Link>
             <div className={classes.menu}>
-                <p><Link className={classes.link} to="/input">Contribute</Link></p>
-                <p><Link className={classes.link} to="/flipcards">Flipcards</Link></p>
-                <p><Link className={classes.link} to="/questions">Questions</Link></p>
+                <Link className={classes.link} to="/questions">Questions</Link>
+                <Link className={classes.link} to="/flipcards">Flipcards</Link>
+                <Link className={classes.link} to="/input">Contribute</Link>
             </div>
         </div>
     )

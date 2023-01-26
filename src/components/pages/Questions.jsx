@@ -65,20 +65,22 @@ const Questions = () => {
                 <div className={classes["select-container"]}>
                     <Categories setCategories={handleCategories} />
                     <SubCategories setSubCategories={handleSubCategories} categories={selectedCategories} />
-                    <Companies setCompanies={handleCompanies}/>
+                    <Companies setCompanies={handleCompanies} />
                 </div>
             </Box>
-            {questions.map(item => {
-                if (
-                    (selectedCategories.includes(item.category) || !selectedCategories.length) &&
-                    (selectedSubCategories.includes(item.subCategory) || !selectedSubCategories.length) &&
-                    (selectedCompanies.includes(item.company) || !selectedCompanies.length)
-                ) {
-                    return (
-                        <QuestionComponent key={item.id} question={item} />
-                    )
-                }
-            })}
+            <div className={classes.questions}>
+                {questions.map(item => {
+                    if (
+                        (selectedCategories.includes(item.category) || !selectedCategories.length) &&
+                        (selectedSubCategories.includes(item.subCategory) || !selectedSubCategories.length) &&
+                        (selectedCompanies.includes(item.company) || !selectedCompanies.length)
+                    ) {
+                        return (
+                            <QuestionComponent key={item.id} question={item} />
+                        )
+                    }
+                })}
+            </div>
         </div>
     )
 

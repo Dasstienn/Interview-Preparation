@@ -6,6 +6,17 @@
     --primary-color: rgb(21, 113, 219);
     --hover-color: rgb(21, 41, 219);
     --title-color: rgb(42, 107, 182);
+    --text-color: rgb(66, 60, 60);
+}
+
+.App {
+    /* background-image: url(https://i.pinimg.com/originals/80/42/d5/8042d5b86ee7015157cab06b14c80e42.gif);
+    background-size: cover;
+    background-position: center; */
+    height: 100vh;
+    padding-top: 7rem;
+    scrollbar-gutter: stable;
+    overflow-y: auto;
 }
 
 h3 {

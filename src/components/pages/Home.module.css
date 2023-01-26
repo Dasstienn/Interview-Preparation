@@ -1,0 +1,114 @@
+.landing {
+    position: relative;
+    top: -4rem;
+    width: 100%;
+    height: 75vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-left: 80px;
+}
+
+.main-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("https://icma.org/sites/default/files/How%20to%20interview%20image.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+
+.main-img::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(7, 19, 43);
+    opacity: 0.6;
+}
+
+.title {
+    color: white;
+    font-size: 55px;
+    font-weight: 600;
+    margin-top: 12rem;
+    margin-bottom: 20px;
+}
+
+.text {
+    margin-top: 0;
+    width: 750px;
+    color: white;
+    font-size: 20px;
+}
+
+.text span {
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.btn {
+    margin-top: 3rem;
+    border-radius: 10px;
+    padding: 15px 20px;
+}
+
+.first-part {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.section-title {
+    text-align: center;
+    width: 60%;
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 80px;
+    color: var(--text-color);
+}
+
+.section-flashcards {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 1000px;
+    margin-bottom: 80px;
+}
+
+.info {
+    width: 600px;
+    height: 350px;
+    padding-left: 30px;
+}
+
+.info-title {
+    font-size: 30px;
+    font-weight: 700;
+    margin: 0;
+    color: var(--text-color);
+}
+
+.info-text {
+    width: 380px;
+    font-size: 20px;
+    margin-top: 40px;
+}
+
+.info .btn {
+    font-size: 17px;
+}
+
+img {
+    width: 550px;
+    height: 330px;
+    border-radius: 15px;
+}
