@@ -1,4 +1,5 @@
 import classes from "./Home.module.css"
+import { Link } from "react-router-dom"
 
 
 const Home = () => {
@@ -18,7 +19,7 @@ const Home = () => {
                     <div className={classes.info}>
                         <p className={classes["info-title"]}>Memorize faster for free</p>
                         <p className={classes["info-text"]}>Research shows that testing yourself with flashcards is more effective than rereading your notes. From technical questions to behavioral, LearnD is used by job seekers in over 100 different topics.</p>
-                        <button className={classes.btn}>Try Flashcards for free</button>
+                        <Link to="/flipcards"><button className={classes.btn}>Try Flashcards for free</button></Link>
                     </div>
                     <img src="https://cdn.dribbble.com/users/26938/screenshots/1703104/duolingo-flashcards.gif" alt="flashcards-demo" />
                 </div>
