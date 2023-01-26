@@ -14,7 +14,7 @@ const Home = () => {
                 <button className={classes.btn}>Get Started</button>
             </div>
             <div className={classes["first-part"]}>
-                <p className={classes["section-title"]}>90% of job seekers who use LearnD report receivig job offers.</p>
+                <p className={classes["section-title"]}>90% of job seekers who use LearnD report receiving job offers.</p>
                 <div className={classes["section-flashcards"]}>
                     <div className={classes.info}>
                         <p className={classes["info-title"]}>Memorize faster for free</p>
