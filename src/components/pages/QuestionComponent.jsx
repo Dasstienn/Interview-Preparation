@@ -4,6 +4,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { motion } from "framer-motion"
 
 
 export default function QuestionComponent(props) {
@@ -15,8 +16,13 @@ export default function QuestionComponent(props) {
     };
 
     return (
-        <div>
-            <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')} sx={{ border: "1px solid gray"}}>
+        <motion.div
+            animate={{ opacity: 1 }}
+            initial={{ opacity: 0 }}
+            exit={{ opacity: 0 }}
+            layout
+        >
+            <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')} sx={{ border: "1px solid gray" }}>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1bh-content"
@@ -31,9 +37,9 @@ export default function QuestionComponent(props) {
                     <Typography sx={{ margin: "20px 0 40px 0" }}>
                         {answer}
                     </Typography>
-                    <p style={{fontWeight: "500"}}>Company asked: <span style={{fontStyle: "italic", color: "gray", fontWeight: "500"}}>{company}</span></p>
+                    <p style={{ fontWeight: "500" }}>Company asked: <span style={{ fontStyle: "italic", color: "gray", fontWeight: "500" }}>{company}</span></p>
                 </AccordionDetails>
             </Accordion>
-        </div>
+        </motion.div>
     );
 }

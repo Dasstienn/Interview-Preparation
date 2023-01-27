@@ -1,5 +1,9 @@
 .flipcard {
-    height: 500px;
-    width: 600px;
+    height: 100%;
+    min-height: 300px;
+    max-height: 500px;
+    width: 100%;
+    min-width: 300px;
+    max-width: 600px;
     perspective: 1000px;
 }
