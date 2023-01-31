@@ -7,6 +7,7 @@ export const questionsContext = createContext()
 
 const Provider = ({ children }) => {
     const [questions, setQuestions] = useState([])
+    const [questionsData, setQuestionsData] = useState({})
     const dataUrl = "https://interview-preparation-aa76e-default-rtdb.firebaseio.com/data.json"
 
     const fetchQuestions = async () => {
@@ -16,6 +17,7 @@ const Provider = ({ children }) => {
             loadedQs.push(res[key])
         }
         setQuestions(loadedQs)
+        setQuestionsData(res)
     }
 
     useEffect(() => {
@@ -24,6 +26,7 @@ const Provider = ({ children }) => {
 
     const myData = {
         questions: questions,
+        questionsData: questionsData,
         setQuestions: setQuestions
     }
 

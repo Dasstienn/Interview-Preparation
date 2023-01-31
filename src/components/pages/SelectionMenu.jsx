@@ -1,6 +1,6 @@
 import classes from "./SelectionMenu.module.css"
 import { useContext, useState } from "react"
-import { questionsContext } from "../context/Context"
+import { questionsContext } from "../../store/questions-context"
 
 import Categories from "./questions/Categories"
 import SubCategories from "./questions/SubCategories"
@@ -9,7 +9,7 @@ import Companies from "./questions/Companies"
 import Box from '@mui/material/Box';
 
 
-const SelectionMenu = ({setCategories, setSubCategories, setCompanies}) => {
+const SelectionMenu = ({ setCategories, setSubCategories, setCompanies }) => {
     const { questions } = useContext(questionsContext)
 
     // Select dropdown states
@@ -56,18 +56,18 @@ const SelectionMenu = ({setCategories, setSubCategories, setCompanies}) => {
 
     // Rendering
     return (
-            <Box
-                className={classes.box}
-                component="form"
-                noValidate
-                autoComplete="off"
-            >
-                <div className={classes["select-container"]}>
-                    <Categories setCategories={handleCategories} />
-                    <SubCategories setSubCategories={handleSubCategories} categories={selectedCategories} />
-                    <Companies setCompanies={handleCompanies} />
-                </div>
-            </Box>
+        <Box
+            className={classes.box}
+            component="form"
+            noValidate
+            autoComplete="off"
+        >
+            <div className={classes["select-container"]}>
+                <Categories setCategories={handleCategories} />
+                <SubCategories setSubCategories={handleSubCategories} categories={selectedCategories} />
+                <Companies setCompanies={handleCompanies} />
+            </div>
+        </Box>
     )
 }
 

@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { questionsContext } from "../context/Context"
+import { questionsContext } from "../../store/questions-context"
 import { motion, AnimatePresence } from "framer-motion"
 
 import "./FlipCards.module.css"

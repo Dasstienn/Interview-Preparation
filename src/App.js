@@ -1,25 +1,35 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
-import Header from './components/navigation/Header';
+import RootLayout from './components/pages/RootLayout';
 import Home from './components/pages/Home';
 import Input from './components/pages/Input';
 import Questions from './components/pages/Questions';
 import FlipCards from './components/pages/FlipCards';
+import QuestionDetail from './components/pages/QuestionDetail';
+import AuthForm from './components/Auth/AuthForm';
+
 
 
 function App() {
 
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <RootLayout />,
+      children: [
+        { index: true, element: <Home /> },
+        { path: "input", element: <Input /> },
+        { path: "flipcards", element: <FlipCards /> },
+        { path: "questions", element: <Questions /> },
+        { path: "questions/:questionId", element: <QuestionDetail /> },
+        { path: "signup", element: <AuthForm /> }
+      ]
+    },
+  ])
+
   return (
     <div className="App">
-      <Router>
-        <Header />
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/input" component={Input} />
-          <Route path="/flipcards" component={FlipCards} />
-          <Route path="/questions" component={Questions} />
-        </Switch>
-      </Router >
+      <RouterProvider router={router} />
     </div >
   );
 }

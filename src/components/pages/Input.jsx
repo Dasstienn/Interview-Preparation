@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useState, useContext } from "react";
 import axios from "axios";
-import { questionsContext } from "../context/Context";
+import { questionsContext } from "../../store/questions-context";
 import { v4 as uuidv4 } from 'uuid'
 
 import classes from './Input.module.css'
@@ -25,6 +25,7 @@ function Input() {
         category: "",
         subCategory: "",
         company: "",
+        userId: ""
     }
 
     const [item, setItem] = useState(defaultToDo)
@@ -71,13 +72,19 @@ function Input() {
 
 
     const addQuestion = async () => {
+        const obj = {}
+        obj[localStorage.getItem("id")] = 1
         await axios.post("https://interview-preparation-aa76e-default-rtdb.firebaseio.com/data.json", {
             id: item.id,
             question: item.question,
             answer: item.answer,
             category: item.category,
             subCategory: item.subCategory,
-            company: item.company
+            company: item.company,
+            userId: localStorage.getItem("id"),
+            upvotes: { null: 1 },
+            downvotes: { null: 1 },
+            score: 0
         },
             {
                 headers: { 'Content-Type': 'application/json' }

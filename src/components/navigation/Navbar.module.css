@@ -55,3 +55,42 @@
     cursor: pointer;
     border-bottom: 2px solid rgb(242, 226, 226);
 }
+
+.active {
+    cursor: pointer;
+    width: 80px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+    border-bottom: 2px solid rgb(242, 226, 226);
+    text-decoration: none;
+    color: white;
+    font-weight: 650;
+}
+
+.signup {
+    width: 90px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    border: 1px solid white;
+    border-radius: 7px;
+    margin: auto;
+}
+
+.signup:hover {
+    background-color: white;
+    color: var(--primary-color);
+}
+
+.signup:active {
+    background-color: var(--hover-color);
+    color: white;
+}

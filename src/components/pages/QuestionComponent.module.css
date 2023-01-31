@@ -1,0 +1,20 @@
+.footing {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+}
+
+.thumbs {
+    padding-top: 20px;
+    display: flex;
+    width: 60px;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--primary-color);
+}
+
+.thumbs:hover {
+    cursor: pointer;
+}

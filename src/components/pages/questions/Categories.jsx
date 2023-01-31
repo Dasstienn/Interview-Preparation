@@ -8,7 +8,7 @@ import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
 
 import { useContext, useState } from "react"
-import { questionsContext } from '../../context/Context';
+import { questionsContext } from '../../../store/questions-context';
 
 
 
@@ -43,7 +43,7 @@ const Categories = ({ setCategories }) => {
 
     return (
         <div>
-            <FormControl sx={{ m: 1, width: 200, bgcolor: "white", borderRadius: 2}} size='small' >
+            <FormControl sx={{ m: 1, width: 200, bgcolor: "white", borderRadius: 2 }} size='small' >
                 <InputLabel id="demo-multiple-checkbox-label" >Category</InputLabel>
                 <Select
                     labelId="demo-multiple-checkbox-label"
@@ -57,7 +57,7 @@ const Categories = ({ setCategories }) => {
                 >
                     {Object.keys(categories).map((el) => (
                         <MenuItem key={el} value={el}>
-                            <Checkbox sx={{p:0.5}} checked={selected.indexOf(el) > -1} />
+                            <Checkbox sx={{ p: 0.5 }} checked={selected.indexOf(el) > -1} />
                             <ListItemText primary={el} />
                         </MenuItem>
                     ))}

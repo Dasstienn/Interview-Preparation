@@ -8,7 +8,7 @@ import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
 
 import { useContext, useState } from "react"
-import { questionsContext } from '../../context/Context';
+import { questionsContext } from '../../../store/questions-context';
 
 
 
@@ -28,7 +28,7 @@ const SubCategories = ({ categories, setSubCategories }) => {
     const { questions } = useContext(questionsContext)
 
     const subCategories = questions.reduce((acc, val) => {
-        if(categories.length > 0) {
+        if (categories.length > 0) {
             if (!acc[val.subCategory] && categories.includes(val.category)) acc[val.subCategory] = 1
         } else {
             if (!acc[val.subCategory]) acc[val.subCategory] = 1
@@ -47,7 +47,7 @@ const SubCategories = ({ categories, setSubCategories }) => {
 
     return (
         <div>
-            <FormControl sx={{ m: 1, width: 200, bgcolor: "white", borderRadius: 2}}  size='small'>
+            <FormControl sx={{ m: 1, width: 200, bgcolor: "white", borderRadius: 2 }} size='small'>
                 <InputLabel id="demo-multiple-checkbox-label">Sub-category</InputLabel>
                 <Select
                     labelId="demo-multiple-checkbox-label"
@@ -60,10 +60,10 @@ const SubCategories = ({ categories, setSubCategories }) => {
                     MenuProps={MenuProps}
                 >
                     {Object.keys(subCategories).map((el) => (
-                            <MenuItem key={el} value={el}>
-                                <Checkbox sx={{p:0.5}} checked={selected.indexOf(el) > -1} />
-                                <ListItemText primary={el} />
-                            </MenuItem>
+                        <MenuItem key={el} value={el}>
+                            <Checkbox sx={{ p: 0.5 }} checked={selected.indexOf(el) > -1} />
+                            <ListItemText primary={el} />
+                        </MenuItem>
                     ))}
                 </Select>
             </FormControl>
