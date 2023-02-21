@@ -5,11 +5,18 @@ import { questionsContext } from "../../store/questions-context"
 import { motion, AnimatePresence } from "framer-motion"
 import { useNavigate } from "react-router-dom"
 
+
 import SelectionMenu from "./SelectionMenu"
+import SortComponent from "../utilities/SortComponent"
+import { useEffect } from "react"
+import { Select } from "@mui/material"
+
+import FlipIcon from '@mui/icons-material/Flip';
 
 
 const Questions = () => {
     const { questions, questionsData } = useContext(questionsContext)
+
     const navigate = useNavigate()
 
     const toFlipcards = () => {
@@ -33,29 +40,32 @@ const Questions = () => {
         setSelectedCompanies(val)
     }
 
-
     // Rendering
     return (
         <div className={classes.container}>
-            <div className={classes["to-flipcards"]} onClick={toFlipcards}>
-                <p>Flipcards</p>
+            <div className={classes['redirect-buttons']}>
+                <div className={classes["to-flipcards"]} onClick={toFlipcards}>
+                    <FlipIcon sx={{ color: "rgb(21, 113, 219)" }} />
+                    <p>Flipcards</p>
+                </div>
             </div>
             <SelectionMenu
                 setCategories={handleCategories}
                 setSubCategories={handleSubCategories}
                 setCompanies={handleCompanies}
             />
+            <hr className={classes.line} />
+            <div className={classes.sort}><SortComponent /></div>
             <motion.div layout className={classes.questions}>
                 <AnimatePresence>
-                    {Object.keys(questionsData).map(key => {
-                        const item = questionsData[key]
+                    {questions.map(item => {
                         if (
                             (selectedCategories.includes(item.category) || !selectedCategories.length) &&
                             (selectedSubCategories.includes(item.subCategory) || !selectedSubCategories.length) &&
                             (selectedCompanies.includes(item.company) || !selectedCompanies.length)
                         ) {
                             return (
-                                <QuestionComponent key={item.id} question={item} dataId={key} />
+                                <QuestionComponent key={item.id} question={item} />
                             )
                         }
                     })}

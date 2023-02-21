@@ -16,7 +16,8 @@ import { useState } from 'react';
 
 
 export default function QuestionComponent(props) {
-    const { question, answer, category, company, id, upvotes, downvotes} = props.question
+    const { question, answer, category, company, id, upvotes, downvotes, views} = props.question
+
     const userId = localStorage.getItem("id")
 
     const [expanded, setExpanded] = useState(false);
@@ -57,7 +58,7 @@ export default function QuestionComponent(props) {
             const obj = upvotes
             const added = userId
             obj[added] = 1
-            await axios.patch(`https://interview-preparation-aa76e-default-rtdb.firebaseio.com/data/${props.dataId}.json`, {
+            await axios.patch(`https://interview-preparation-aa76e-default-rtdb.firebaseio.com/data/${id}.json`, {
                 upvotes: obj
             })
         }
@@ -68,7 +69,7 @@ export default function QuestionComponent(props) {
             const obj = downvotes
             const added = userId
             obj[added] = 1
-            await axios.patch(`https://interview-preparation-aa76e-default-rtdb.firebaseio.com/data/${props.dataId}.json`, {
+            await axios.patch(`https://interview-preparation-aa76e-default-rtdb.firebaseio.com/data/${id}.json`, {
                 downvotes: obj
             })
         }
@@ -78,7 +79,7 @@ export default function QuestionComponent(props) {
         if (userId) {
             const obj = upvotes
             delete obj[userId]
-            await axios.patch(`https://interview-preparation-aa76e-default-rtdb.firebaseio.com/data/${props.dataId}.json`, {
+            await axios.patch(`https://interview-preparation-aa76e-default-rtdb.firebaseio.com/data/${id}.json`, {
                 upvotes: obj
             })
         }
@@ -88,7 +89,7 @@ export default function QuestionComponent(props) {
         if (userId) {
             const obj = downvotes
             delete obj[userId]
-            await axios.patch(`https://interview-preparation-aa76e-default-rtdb.firebaseio.com/data/${props.dataId}.json`, {
+            await axios.patch(`https://interview-preparation-aa76e-default-rtdb.firebaseio.com/data/${id}.json`, {
                 downvotes: obj
             })
         }
@@ -97,8 +98,17 @@ export default function QuestionComponent(props) {
     const updateScore = async () => {
         if (userId) {
             const newScore = Math.max(0, Object.keys(upvotes).length - Object.keys(downvotes).length)
-            await axios.patch(`https://interview-preparation-aa76e-default-rtdb.firebaseio.com/data/${props.dataId}.json`, {
+            await axios.patch(`https://interview-preparation-aa76e-default-rtdb.firebaseio.com/data/${id}.json`, {
                 score: newScore
+            })
+        }
+    }
+
+    const viewed = async () => {
+        if (userId) {
+            const newView = views + 1
+            await axios.patch(`https://interview-preparation-aa76e-default-rtdb.firebaseio.com/data/${id}.json`, {
+                views: newView
             })
         }
     }
@@ -127,7 +137,7 @@ export default function QuestionComponent(props) {
                     </Typography>
                     <p style={{ fontWeight: "500" }}>Company asked: <span style={{ fontStyle: "italic", color: "gray", fontWeight: "500" }}>{company}</span></p>
                     <div className={classes.footing}>
-                        <Link to={`/questions/${id}`}>Details</Link>
+                        <Link to={`/questions/${id}`} onClick={viewed}>Details</Link>
                         <div className={classes.thumbs}>
                             <h1 onClick={handleThumbUp}>
                                 {thumbUp ? <ThumbUpIcon /> : <ThumbUpAltOutlinedIcon />}

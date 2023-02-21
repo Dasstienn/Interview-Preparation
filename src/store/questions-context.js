@@ -2,22 +2,24 @@ import { createContext, useState, useEffect } from "react";
 import axios from 'axios';
 
 
+
+
 export const questionsContext = createContext()
 
 
 const Provider = ({ children }) => {
     const [questions, setQuestions] = useState([])
-    const [questionsData, setQuestionsData] = useState({})
     const dataUrl = "https://interview-preparation-aa76e-default-rtdb.firebaseio.com/data.json"
 
     const fetchQuestions = async () => {
         const res = await (await axios.get(dataUrl)).data
         const loadedQs = []
         for (const key in res) {
-            loadedQs.push(res[key])
+            const element = res[key]
+            element["id"] = key
+            loadedQs.push(element)
         }
         setQuestions(loadedQs)
-        setQuestionsData(res)
     }
 
     useEffect(() => {
@@ -26,7 +28,6 @@ const Provider = ({ children }) => {
 
     const myData = {
         questions: questions,
-        questionsData: questionsData,
         setQuestions: setQuestions
     }
 

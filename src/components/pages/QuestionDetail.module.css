@@ -1,0 +1,35 @@
+.main-author {
+    border-radius: 10px;
+    width: 80%;
+    margin: auto;
+    box-shadow: var(--primary-box-shadow);
+    padding: 20px;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 0 3rem;
+    text-align: center;
+}
+
+.secondary-author {
+    border-radius: 10px;
+    width: 80%;
+    margin: auto;
+    box-shadow: var(--primary-box-shadow);
+    padding: 20px;
+}
+
+.secondary-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 0 3rem;
+    text-align: center;
+}
