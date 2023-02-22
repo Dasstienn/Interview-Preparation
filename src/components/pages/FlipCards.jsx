@@ -40,6 +40,7 @@ const FlipCards = () => {
         setFiltered(filteredData)
     }, [selectedCategories, selectedSubCategories, selectedCompanies])
 
+
     const prevClick = () => {
         if (idx >= 1) {
             const num = idx - 1
