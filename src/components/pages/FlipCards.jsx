@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useMemo } from "react";
 import { questionsContext } from "../../store/questions-context"
 import { motion, AnimatePresence } from "framer-motion"
 

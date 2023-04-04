@@ -3,12 +3,10 @@ import Select from "react-select"
 import _ from "lodash"
 import { useContext } from "react"
 import { questionsContext } from "../../store/questions-context"
-import { useState } from "react"
 
 
 const SortComponent = () => {
     const { questions, setQuestions } = useContext(questionsContext)
-    const [selected, setSelected] = useState('featured')
 
     const options = [
         { value: 'featured', label: 'Featured' },
